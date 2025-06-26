@@ -13,7 +13,7 @@ import { Loader2, RefreshCcw } from "lucide-react"
 import { useSession } from "next-auth/react"
 import { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-
+const [profileUrl, setProfileUrl] = useState("");
  function Page(){
     const [messages,setMessages]=useState<Message[]>([])
     const [isLoading,setIsLoading]=useState(false)
@@ -99,9 +99,13 @@ import { useForm } from "react-hook-form"
     })
    }
   }
-  const username=session?.user.username
-  const baseUrl=`${window.location.protocol}//${window.location.host}`
-   const profileUrl=`${baseUrl}/u/${username}`
+  useEffect(() => {
+  if (typeof window !== "undefined" && session?.user?.username) {
+    const baseUrl = `${window.location.protocol}//${window.location.host}`;
+    setProfileUrl(`${baseUrl}/u/${session.user.username}`);
+  }
+}, [session?.user?.username]);
+
    const copyToClipBoard=()=>{
     navigator.clipboard.writeText(profileUrl)
     .then(()=>{
