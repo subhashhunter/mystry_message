@@ -13,8 +13,9 @@ import { Loader2, RefreshCcw } from "lucide-react"
 import { useSession } from "next-auth/react"
 import { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
-const [profileUrl, setProfileUrl] = useState("");
+
  function Page(){
+    const [profileUrl, setProfileUrl] = useState("");
     const [messages,setMessages]=useState<Message[]>([])
     const [isLoading,setIsLoading]=useState(false)
     const[isSwitchLoading,setIsSwitchLoading]=useState(false)
