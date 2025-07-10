@@ -28,7 +28,7 @@ export default function verifyaccount(){
                 title:"success",
                 description:response.data.message
             })
-            
+            router.replace('/dashboard')
         } catch (error) {
               const axioserror=error as AxiosError<ApiResponse>;
                  let errorMessage=axioserror.response?.data.message

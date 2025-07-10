@@ -6,7 +6,9 @@ import UserModel from "@/model/User";
 export async function POST(request:Request){
     await dbConnect()
     const session=await getServerSession(authOptions)
-    const user=await session?.user
+    console.log("hello")
+    console.log(session)
+    const user= session?.user
     if(!session || !session.user){
         return Response.json({
             success:false,

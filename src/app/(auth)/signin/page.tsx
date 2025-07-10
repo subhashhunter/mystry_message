@@ -9,6 +9,7 @@ import { z } from "zod";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 export default function Page(){
     const {toast}=useToast();
     const router=useRouter();
@@ -87,11 +88,20 @@ export default function Page(){
             </FormItem>
           )}
         />
-        <Button  type="submit" >signin</Button>
+        <div className="display flex gap-2">
+          <Button  type="submit" >signin</Button>
+        <div className="text-center mt-4">
+               <p> Don't have account?{' '}
+               <Link href='/signup' className="text-blue-600 hover:text-blue-800">signup
+               </Link>
+               </p>
+            </div>
+        </div>
           </form>
             </Form>
-
+            
         </div>
+        
 
     </div>
    )
